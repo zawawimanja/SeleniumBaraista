@@ -37,3 +37,5 @@ The POM pattern separates page objects (elements, actions) from test logic. The 
 10. BDD (Behavior Driven Development) - Cucumber
 
 BDD promotes test creation based on user behavior. Cucumber is a popular BDD framework that allows writing test scenarios in a human-readable format (gherkin syntax).
+
+11. Encapsulation
