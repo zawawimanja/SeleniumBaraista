@@ -39,3 +39,10 @@ The POM pattern separates page objects (elements, actions) from test logic. The 
 BDD promotes test creation based on user behavior. Cucumber is a popular BDD framework that allows writing test scenarios in a human-readable format (gherkin syntax).
 
 11. Encapsulation
+
+    ---------------------------------------------------------------------------------------------------------------------------------
+
+a. ID is typically the most unique and stable locator.
+b. XPath and CSS Selectors are highly customizable and can be made unique, but they can be fragile if the DOM structure changes.
+c. Name is somewhat unique but less reliable than ID.
+d. Class Name is less unique and may be shared by multiple elements.
