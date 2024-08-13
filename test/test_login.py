@@ -15,6 +15,7 @@ def credentialslogin():
     print(f"Looking for credentials file at: {file_path}")
     with open(file_path, "r") as jsonfile:
         data = json.load(jsonfile)
+        print(f"Looking for data: {data}")
         return data["credentials"][0]
 
 
@@ -32,6 +33,8 @@ def test_homepage(driver, credentialslogin):
 
     username = credentialslogin["username"]
     password = credentialslogin["password"]
+    print(f"Looking for data: {username}")
+    print(f"Looking for data: {password}")
 
     login_page.open_link("http://google.com")
     # login_page.enter_username(username).enter_password(password).click_login_button()

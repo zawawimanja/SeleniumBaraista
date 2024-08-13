@@ -11,9 +11,11 @@ from pages.page_factory import PageFactory
 
 @pytest.fixture(scope="module")
 def credentialslogin():
-    file_path = os.path.join(os.path.dirname(__file__), "config/credentials.json")
+    file_path = os.path.join(os.path.dirname(__file__), "..\config\credentials.json")
+    print(f"Looking for credentials file at: {file_path}")
     with open(file_path, "r") as jsonfile:
         data = json.load(jsonfile)
+        print(f"Looking for data: {data}")
         return data["credentials"][0]
 
 
