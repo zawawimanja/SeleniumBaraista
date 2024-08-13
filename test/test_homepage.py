@@ -11,6 +11,3 @@ def test_click_sidebar_tab(home_page):
     # Click on a specific sidebar tab
     tab_to_click = "Pre-Registration"  # Example tab text
     home_page.click_sidebar_tab(tab_to_click)
-    # Add assertions to verify the result of the tab click
-    # For example:
-    # assert "Expected Page Title" in driver.title
