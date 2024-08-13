@@ -1,16 +1,24 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from pages.page import Page  # Import the abstract Page class
 
-class HeaderComponent:
+class BasePage(Page):
     def __init__(self, driver):
         self.driver = driver
-    
-    def click_profile(self):
-        profile_button = self.driver.find_element(By.ID, "profile")
-        profile_button.click()
+        self.wait = WebDriverWait(driver, 10)  # Adjust the timeout as needed
 
-class LoginPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.header = HeaderComponent(driver)
+    def wait_for_element(self, locator):
+        """Waits for an element to be present on the page."""
+        return self.wait.until(EC.presence_of_element_located(locator))
 
+    def accept_alert(self):
+        """Accepts an alert if it is present."""
+        alert = WebDriverWait(self.driver, 10).until(EC.alert_is_present())
+        alert.accept()
+
+    def scroll_to_element(self, locator):
+        """Scrolls to the element specified by the locator."""
+        element = self.wait_for_element(locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+   

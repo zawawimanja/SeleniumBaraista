@@ -1,6 +1,8 @@
 from pages.login_page import LoginPage
 
 
+#You might implement a factory pattern to manage the creation of 
+# different page objects, which can be useful if your application has a lot of different pages.
 
 class PageFactory:
     def __init__(self, driver):

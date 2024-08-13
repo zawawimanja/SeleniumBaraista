@@ -1,33 +1,41 @@
-from abc import ABC, abstractmethod
+from selenium.webdriver.common.by import By
+from pages.base_page import BasePage
+from component.header_component import HeaderComponent
 
-class Page(ABC):
+class LoginPage(BasePage):
+    _username_locator = (By.ID, "username-email")
+    _password_locator = (By.ID, "password")
+    _login_button_locator = (By.CLASS_NAME, "primaryAction.signin-button")
+
     def __init__(self, driver):
-        self.driver = driver
-    
-    @abstractmethod
+        super().__init__(driver)
+        self.header = HeaderComponent(driver)  # Initialize HeaderComponent
+
     def is_loaded(self):
-        pass
-
-
-class HeaderComponent:
-    def __init__(self, driver):
-        self.driver = driver
-    
-    def click_profile(self):
-        profile_button = self.driver.find_element(By.ID, "profile")
-        profile_button.click()
-
-class LoginPage(Page):
-    def is_loaded(self):
+        """Check if the login page is loaded."""
         return "Login" in self.driver.title
 
     def open_link(self, url):
         self.driver.get(url)
-  
+
     def enter_username(self, username):
-        self.send_keys(self._username_locator, username)
+        username_input = self.driver.find_element(*self._username_locator)
+        username_input.send_keys(username)
         return self  # Allow chaining
 
     def enter_password(self, password):
-        self.send_keys(self._password_locator, password)
+        password_input = self.driver.find_element(*self._password_locator)
+        password_input.send_keys(password)
         return self  # Allow chaining
+
+    def click_login_button(self):
+        login_button = self.driver.find_element(*self._login_button_locator)
+        login_button.click()
+        return self  # Allow chaining or continue the flow if needed
+
+    # To allow for a more fluent interface, you might want to return the page object itself from certain methods. This allows method chaining, making tests more readable.
+
+
+    def click_profile(self):
+        """Method to use HeaderComponent's functionality."""
+        self.header.click_profile()
