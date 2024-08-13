@@ -1,4 +1,6 @@
-from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By  # type: ignore
+
+
 ## composition where a LoginPage might contain instances of smaller,
 # reusable components (like a Header or Footer).
 class HeaderComponent:

@@ -3,7 +3,7 @@ from pages.base_page import BasePage
 from component.header_component import HeaderComponent
 
 
-class LoginPage(BasePage):
+class PregistrationPage(BasePage):
     _username_locator = (By.ID, "username-email")
     _password_locator = (By.ID, "password")
     _login_button_locator = (By.CLASS_NAME, "primaryAction.signin-button")

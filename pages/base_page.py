@@ -1,6 +1,9 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from pages.page import Page  # Import the abstract Page class
+from pages.page_abstract import Page
+
+# provides utility methods that are commonly used across different page classes,
+
 
 class BasePage(Page):
     def __init__(self, driver):
@@ -20,5 +23,3 @@ class BasePage(Page):
         """Scrolls to the element specified by the locator."""
         element = self.wait_for_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
-
-   
