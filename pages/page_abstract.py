@@ -12,3 +12,8 @@ class Page(ABC):
     def is_loaded(self):
         """Check if the page is loaded."""
         pass
+
+    @abstractmethod
+    def open_link(self):
+        """Check if the page is loaded."""
+        pass

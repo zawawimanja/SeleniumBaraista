@@ -23,3 +23,26 @@ class BasePage(Page):
         """Scrolls to the element specified by the locator."""
         element = self.wait_for_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    def is_loaded(self):
+        #   print(f"Text: {text}")
+
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(
+                    (
+                        By.XPATH,
+                        f"//h2[@class='heading' and contains(text(), 'Home Page')]",
+                    )
+                )
+            )
+            print("Home Page loaded successfully")
+            return True
+        except Exception as e:
+            print(f"Error checking if Home Page is loaded: {str(e)}")
+            return False
+
+    def open_link(self, url):
+        print(f"Opening URL: {url}")
+        self.driver.get(url)
+        print(f"Current URL after opening: {self.driver.current_url}")
