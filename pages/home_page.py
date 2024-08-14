@@ -7,6 +7,8 @@ from component.sidebar_component import SidebarComponent
 
 
 class HomePage(BasePage):
+    _heading_locator = (By.ID, "username-email")
+
     def __init__(self, driver):
         super().__init__(driver)
         print("Initializing HomePage")
@@ -15,13 +17,14 @@ class HomePage(BasePage):
         print("HomePage initialized")
 
     def is_loaded(self):
-        """Check if the home page is loaded."""
+        #   print(f"Text: {text}")
+
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(
                     (
                         By.XPATH,
-                        "//h2[@class='heading' and contains(text(), 'Home Page')]",
+                        f"//h2[@class='heading' and contains(text(), 'Home Page')]",
                     )
                 )
             )

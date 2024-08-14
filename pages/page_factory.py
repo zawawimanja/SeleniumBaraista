@@ -24,10 +24,6 @@ class PageFactory:
                 print("Creating HomePage")
                 home_page = HomePage(self.driver)
                 print(f"Created HomePage: {home_page}")
-                if home_page.is_loaded():
-                    print("HomePage is loaded successfully")
-                else:
-                    print("HomePage failed to load")
                 return home_page
             except Exception as e:
                 print(f"Error creating HomePage: {str(e)}")
