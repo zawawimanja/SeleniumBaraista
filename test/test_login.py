@@ -36,14 +36,11 @@ def test_homepage(driver, credentialslogin):
     print(f"Looking for data: {username}")
     print(f"Looking for data: {password}")
 
-    login_page.open_link("http://google.com")
-    # login_page.enter_username(username).enter_password(password).click_login_button()
+    login_page.open_link(
+        "http://barista-uat.perkeso.gov.my:13491/login/ActiveDirectory?returnUrl=%2F"
+    )
+    login_page.enter_username(username).enter_password(password).click_login_button()
 
     # Verify login was successful
 
     return factory.get_page("HomePage")
-
-
-def test_dummy():
-    assert True
-    print("testlogin")
