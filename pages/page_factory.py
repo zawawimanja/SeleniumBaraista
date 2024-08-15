@@ -1,6 +1,6 @@
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
-from pages.preregistration_page import PregistrationPage
+from pages.preregistration_page import PreregistrationPage
 from pages.mycases_page import MyCasesPage
 from pages.base_page import BasePage
 
@@ -20,15 +20,10 @@ class PageFactory:
             print(f"Created LoginPage: {login_page}")
             return login_page
         elif page_name == "Home":
-            try:
-                print("Creating HomePage")
-                home_page = HomePage(self.driver)
-                print(f"Created HomePage: {home_page}")
-                return home_page
-            except Exception as e:
-                print(f"Error creating HomePage: {str(e)}")
-                import traceback
-
-                traceback.print_exc()
-                return None
-        # ... rest of the method ...
+            home_page = HomePage(self.driver)
+            print(f"Created HomePage: {home_page}")
+            return home_page
+        elif page_name == "Preregistration":  # Fixed typo
+            preregistration_page = PreregistrationPage(self.driver)
+            print(f"Created PreregistrationPage: {preregistration_page}")
+            return preregistration_page

@@ -12,13 +12,6 @@ class LoginPage(BasePage):
         super().__init__(driver)
         self.header = HeaderComponent(driver)  # Initialize HeaderComponent
 
-    def is_loaded(self):
-        """Check if the login page is loaded."""
-        return "Login" in self.driver.title
-
-    def open_link(self, url):
-        self.driver.get(url)
-
     def enter_username(self, username):
         username_input = self.driver.find_element(*self._username_locator)
         username_input.send_keys(username)
